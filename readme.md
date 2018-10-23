@@ -62,6 +62,3 @@ text := quote.Template(`This is a test for {{ .Name}} at {{ .Address }}`, map[st
 })
 
 ``` 
-
-
-[text](https://link)
