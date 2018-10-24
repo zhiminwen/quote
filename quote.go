@@ -45,6 +45,11 @@ func Cmd(raw string, joinChar string) string {
 	return strings.Join(Line(raw), joinChar)
 }
 
+// join command line with either & or && or ',' using heredocf
+func Cmdf(raw string, joinChar string, args ...interface{}) string {
+	return strings.Join(Line(HereDocf(raw, args...)), joinChar)
+}
+
 // Create a Map[string]string based template. Call log.Fatalf if any error detected
 func Template(text string, data map[string]string) string {
 	t, err := template.New("myT").Parse(text)
