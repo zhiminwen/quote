@@ -8,6 +8,9 @@ Construct a string slice as Ruby's quote
 
 >Based on the suggestion, change the q to quote for a better package name
 
+[![Build status](https://img.shields.io/travis/mmcloughlin/meow.svg?style=flat-square)](https://travis-ci.org/zhiminwen/quote)
+
+
 ## Synposis
 
 Get and import
