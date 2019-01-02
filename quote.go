@@ -2,10 +2,10 @@ package quote
 
 import (
 	"bytes"
-	"html/template"
 	"log"
 	"regexp"
 	"strings"
+	"text/template"
 
 	"github.com/MakeNowJust/heredoc"
 )
@@ -63,4 +63,9 @@ func Template(text string, data map[string]string) string {
 	}
 
 	return buf.String()
+}
+
+func CmdTemplate(text string, data map[string]string) string {
+	str := Template(text, data)
+	return Cmd(str, " && ")
 }
