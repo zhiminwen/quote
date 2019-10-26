@@ -53,7 +53,7 @@ func Cmdf(raw string, joinChar string, args ...interface{}) string {
 
 // Create a Map[string]string based template. Call log.Fatalf if any error detected
 func Template(text string, data map[string]string) string {
-	t, err := template.New("myT").Funcs(sprig.FuncMap()).Parse(text)
+	t, err := template.New("myT").Funcs(sprig.TxtFuncMap()).Parse(text)
 	if err != nil {
 		log.Fatalf("Failed to create template:%v", err)
 	}
