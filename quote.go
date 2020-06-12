@@ -66,6 +66,20 @@ func Template(text string, data map[string]string) string {
 	return buf.String()
 }
 
+func TemplateGeneric(text string, data map[string]interface{}) string {
+	t, err := template.New("myT").Funcs(sprig.TxtFuncMap()).Parse(text)
+	if err != nil {
+		log.Fatalf("Failed to create template:%v", err)
+	}
+	var buf bytes.Buffer
+	err = t.Execute(&buf, data)
+	if err != nil {
+		log.Fatalf("Failed to execute template:%v", err)
+	}
+
+	return buf.String()
+}
+
 func CmdTemplate(text string, data map[string]string) string {
 	str := Template(text, data)
 	return Cmd(str, " && ")
