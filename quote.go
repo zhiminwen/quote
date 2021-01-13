@@ -20,13 +20,26 @@ func Word(line string) []string {
 // Line return the lines as a string slice, ignoring empty line, line as comment (started with // or #)
 func Line(lines string) []string {
 	var result []string
-	//if new line is ended with \, don't split it
-	for _, l := range regexp.MustCompile(`[^\\]\n`).Split(lines, -1) {
+	appendPrevLine := false
+	index := 0
+
+	for _, l := range regexp.MustCompile(`\n`).Split(lines, -1) {
 		nl := strings.TrimSpace(l)
 		if nl == "" || strings.HasPrefix(nl, "//") || strings.HasPrefix(nl, "#") {
 			continue
 		}
-		result = append(result, nl)
+		if appendPrevLine {
+			result[index-1] = result[index-1] + "\n " + nl
+			appendPrevLine = false
+		} else {
+			result = append(result, nl)
+			index++
+		}
+
+		if strings.HasSuffix(nl, "\\") {
+			appendPrevLine = true
+		}
+
 	}
 
 	return result
