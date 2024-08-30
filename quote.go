@@ -8,7 +8,7 @@ import (
 	"text/template"
 
 	"github.com/MakeNowJust/heredoc"
-	"github.com/Masterminds/sprig"
+	"github.com/Masterminds/sprig/v3"
 )
 
 // Word return the string slice of the words

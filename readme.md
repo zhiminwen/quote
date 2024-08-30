@@ -8,8 +8,9 @@ Construct a string slice as Ruby's quote
 
 >Based on the suggestion, change the q to quote for a better package name
 
-[![Build status](https://img.shields.io/travis/mmcloughlin/meow.svg?style=flat-square)](https://travis-ci.org/zhiminwen/quote)
-
+## Update
+- switch to go mod
+- use sprig v3
 
 ## Synposis
 
@@ -26,7 +27,7 @@ Sample:
 var list []string
 
 // slice of word
-list = quote.Word(`master1 master2 master3`) 
+list = quote.Word(`master1 master2 master3`)
 
 // slice from lines
 list = quote.Line(`
@@ -50,7 +51,7 @@ docf := quote.HereDocf(`
 
 // a shortcut for join commands
 cmd := quote.Cmd(`
-  // construct command lines. Same as Line(), join lines with " && " or other connector like ";" 
+  // construct command lines. Same as Line(), join lines with " && " or other connector like ";"
   ls -ltr
 
   hostname
@@ -61,7 +62,7 @@ cmd := quote.Cmd(`
 //Construct a quick template based string using map[string]string
 text := quote.Template(`This is a test for {{ .Name}} at {{ .Address }}`, map[string]string{
   Name: "test",
-  Address: "Street 1", 
+  Address: "Street 1",
 })
 
-``` 
+```
